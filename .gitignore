@@ -1,1 +1,4 @@
 config/config.inc.php
+node_modules/
+resources/dist/
+gulp

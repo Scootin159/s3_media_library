@@ -1,4 +1,4 @@
-<?php namespace photos;
+<?php namespace s3ml;
 
 class Database
 {

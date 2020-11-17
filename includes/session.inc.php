@@ -1,11 +1,6 @@
-<?php namespace photos;
+<?php namespace s3ml;
 
 require_once(__DIR__ . '/database.inc.php');
-
-class Session
-{
-
-}
 
 class DatabaseSessionHandler implements \SessionHandlerInterface
 {
@@ -83,3 +78,4 @@ class DatabaseSessionHandler implements \SessionHandlerInterface
 }
 
 session_set_save_handler(new DatabaseSessionHandler());
+session_start();

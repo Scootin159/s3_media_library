@@ -1,4 +1,4 @@
-<?php namespace photos;
+<?php namespace s3ml;
 
 require __DIR__ . '/composer/vendor/autoload.php';
 
@@ -9,6 +9,7 @@ class Loader
     private const LOAD_LEVEL_2 = 2;
     private const LOAD_LEVEL_3 = 3;
 
+    public const LOAD_LEVEL_OUTPUT = Loader::LOAD_LEVEL_1;
     public const LOAD_LEVEL_DATABASE = Loader::LOAD_LEVEL_2;
     public const LOAD_LEVEL_SESSION = Loader::LOAD_LEVEL_2;    
 
@@ -33,11 +34,12 @@ class Loader
             case Loader::LOAD_LEVEL_0:
             break;
             case Loader::LOAD_LEVEL_1:
-
+                require_once(__DIR__ . '/output.inc.php');
             break;
             case Loader::LOAD_LEVEL_2:
                 require_once(__DIR__ . '/database.inc.php');
                 require_once(__DIR__ . '/session.inc.php');
+                require_once(__DIR__ . '/logins.inc.php');
             break;
             case Loader::LOAD_LEVEL_3:
                 

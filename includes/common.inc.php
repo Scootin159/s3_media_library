@@ -1,4 +1,4 @@
-<?php namespace photos;
+<?php namespace s3ml;
 
 require_once(__DIR__ . '/../config/config.inc.php');
 require_once(__DIR__ . '/loader.inc.php');

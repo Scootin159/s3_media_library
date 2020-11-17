@@ -1,0 +1,20 @@
+<html>
+    {% set page_title = 'Login' %}
+    {% include 'common/head.twig' %}
+    <body>
+        <form id="login" method="POST" action="login.php">
+            <input type="hidden" name="cmd" value="login" />
+            <fieldset>
+                <div class="field">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username"></input>
+                </div>
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password"></input>
+                </div>
+                <button type="submit">Login</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
