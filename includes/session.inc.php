@@ -2,6 +2,10 @@
 
 require_once(__DIR__ . '/database.inc.php');
 
+use \MongoDB\BSON\Binary;
+use \MongoDB\BSON\UTCDateTime;
+use \MongoDB\Driver\Exception\Exception as MongoDBException;
+
 class DatabaseSessionHandler implements \SessionHandlerInterface
 {
     private $collection;

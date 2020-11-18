@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
     plumber = require('gulp-plumber'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    watch = require('gulp-watch');
 
 var paths = {
     
@@ -24,10 +25,7 @@ gulp.task('twig', function (){
 
 gulp.task('build', gulp.parallel(['twig']));
 
-gulp.task('watch', 
-    gulp.series('build'),
-    function () {
-        return [
-            gulp.watch('resources/html/**/*.twig', gulp.series('twig'))
-    ];
-});
+gulp.task('watch', gulp.series(['build', function () {
+    return watch('resources/source/html/*.twig')
+        .pipe(gulp.dest('twig'));
+}]));
