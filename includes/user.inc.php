@@ -4,13 +4,13 @@ Loader::LoadLevel(Loader::LOAD_LEVEL_SESSION);
 
 use \MongoDB\BSON\ObjectId;
 
-class Logins
+class User
 {
     private const SESSION_USERID = "userid";
 
     public static function RequireLogin()
     {
-        if(!isset($_SESSION[Logins::SESSION_USERID]))
+        if(!isset($_SESSION[User::SESSION_USERID]))
         {
             Output::Redirect('/login.php');
         }
@@ -19,7 +19,7 @@ class Logins
     public static function GetUserId() : ObjectId
     {
         self::RequireLogin();
-        return $_SESSION[Logins::SESSION_USERID];
+        return $_SESSION[User::SESSION_USERID];
     }
 
     public static function SetPassword(string $userid, string $password)
@@ -55,7 +55,7 @@ class Logins
 
         Loader::LoadLevel(Loader::LOAD_LEVEL_SESSION);
 
-        $_SESSION[Logins::SESSION_USERID] = $user_info->_id;
+        $_SESSION[User::SESSION_USERID] = $user_info->_id;
 
         return true;
     }

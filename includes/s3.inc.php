@@ -6,9 +6,9 @@ class S3
 {
     public static function UploadFile(string $key, $body)
     {
-        Loader::LoadLevel(LOADER::LOAD_LEVEL_LOGINS);
+        Loader::LoadLevel(LOADER::LOAD_LEVEL_USER);
 
-        $userid = Logins::GetUserId()->__toString();
+        $userid = User::GetUserId()->__toString();
 
         $s3 = new S3Client(SETTING_S3_CONNECT_INFO);
 

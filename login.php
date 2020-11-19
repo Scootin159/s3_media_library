@@ -27,8 +27,8 @@ function do_login_default() : void
 
 function do_login() : void
 {
-    Loader::LoadLevel(Loader::LOAD_LEVEL_LOGINS);
-    if(Logins::LoginUser($_REQUEST['username'], $_REQUEST['password']))
+    Loader::LoadLevel(Loader::LOAD_LEVEL_USER);
+    if(User::LoginUser($_REQUEST['username'], $_REQUEST['password']))
     {
         Output::Redirect('/');
     } else {
@@ -38,14 +38,14 @@ function do_login() : void
 
 function do_logout() : void
 {
-    Loader::LoadLevel(Loader::LOAD_LEVEL_LOGINS);
-    Logins::LogoutUser();
+    Loader::LoadLevel(Loader::LOAD_LEVEL_USER);
+    User::LogoutUser();
     Output::Redirect('/');
 }
 
 function do_set_password() : void
 {
-    Loader::LoadLevel(Loader::LOAD_LEVEL_LOGINS);
-    Logins::SetPassword($_REQUEST['userid'], $_REQUEST['password']);
+    Loader::LoadLevel(Loader::LOAD_LEVEL_USER);
+    User::SetPassword($_REQUEST['userid'], $_REQUEST['password']);
     Output::JSON("Success");
 }

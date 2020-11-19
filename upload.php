@@ -28,11 +28,11 @@ function do_upload_file()
     {
         $file_data = file_get_contents($file['tmp_name']);
 
-        Loader::LoadLevel(Loader::LOAD_LEVEL_LOGINS);
+        Loader::LoadLevel(Loader::LOAD_LEVEL_USER);
         Loader::LoadLevel(Loader::LOAD_LEVEL_DATABASE);
         $result = Database::GetCollection("media")->insertOne(            
             [
-                'userid' => Logins::GetUserId(),
+                'userid' => User::GetUserId(),
                 'filename' => $file['name'],
                 'upload_date' => new UTCDateTime()
             ]

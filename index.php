@@ -4,6 +4,6 @@ require_once('includes/common.inc.php');
 
 Loader::LoadLevel(Loader::LOAD_LEVEL_SESSION);
 
-Logins::RequireLogin();
+User::RequireLogin();
 
 Output::HTML('index.html');
