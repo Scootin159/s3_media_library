@@ -1,0 +1,15 @@
+<html>
+    {% set page_title = 'Upload File' %}
+    {% include 'common/head.twig' %}
+    <body>
+        <form id="login" method="POST" action="upload.php" enctype="multipart/form-data">
+            <input type="hidden" name="cmd" value="upload_file" />
+            <fieldset>
+                <div class="field">
+                    <input type="file" name="file" multiple></input>
+                </div>
+                <button type="submit">Upload Files</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
