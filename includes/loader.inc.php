@@ -14,6 +14,7 @@ class Loader
     public const LOAD_LEVEL_DATABASE = Loader::LOAD_LEVEL_2;
     public const LOAD_LEVEL_SESSION = Loader::LOAD_LEVEL_2;    
     public const LOAD_LEVEL_LOGINS = LOADER::LOAD_LEVEL_2;
+    public const LOAD_LEVEL_S3 = Loader::LOAD_LEVEL_3;
 
     private static $current_level = -1;
 
@@ -46,7 +47,7 @@ class Loader
                 require_once(__DIR__ . '/logins.inc.php');
             break;
             case Loader::LOAD_LEVEL_3:
-                
+                require_once(__DIR__ . '/s3.inc.php');
             break;
         }
     }

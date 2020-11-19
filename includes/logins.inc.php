@@ -1,5 +1,7 @@
 <?php namespace s3ml;
 
+Loader::LoadLevel(Loader::LOAD_LEVEL_SESSION);
+
 use \MongoDB\BSON\ObjectId;
 
 class Logins
@@ -17,7 +19,7 @@ class Logins
     public static function GetUserId() : ObjectId
     {
         self::RequireLogin();
-        return $_SESSION[SESSION_USERID];
+        return $_SESSION[Logins::SESSION_USERID];
     }
 
     public static function SetPassword(string $userid, string $password)
