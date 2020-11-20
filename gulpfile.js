@@ -1,17 +1,14 @@
 "use strict";
 
 var gulp = require('gulp'),
+    include = require('gulp-include'),
+    //jshint = require('gulp-jshint'),
     path = require('path'),
-    twig = require('gulp-twig'),
     prefix = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
-    plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
-    watch = require('gulp-watch');
-
-var paths = {
-    
-};
+    twig = require('gulp-twig'),
+    uglify = require('gulp-uglify')
 
 gulp.task('twig', function (){
     return gulp.src(['resources/source/html/*.twig'])
@@ -23,9 +20,14 @@ gulp.task('twig', function (){
         .pipe(gulp.dest('resources/dist/html'));
 });
 
-gulp.task('build', gulp.parallel(['twig']));
+gulp.task('js', function () {
+    return gulp.src(['resources/source/js/*.js'])
+        //.pipe(jshint, require('./package.json').jshintConfig)
+        //.pipe(jshint.reporter, 'jshint-stylish')
+        //.pipe(jshint.reporter('fail'))
+        .pipe(include())
+        .pipe(uglify())
+        .pipe(gulp.dest('resources/dist/js'));
+});
 
-gulp.task('watch', gulp.series(['build', function () {
-    return watch('resources/source/html/*.twig')
-        .pipe(gulp.dest('twig'));
-}]));
+gulp.task('build', gulp.parallel(['twig', 'js']));
