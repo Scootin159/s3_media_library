@@ -10,7 +10,10 @@
         <script id="main_gallery_template" type="text/template">
             <% _.each(images, function(image) { %>
                 <div class="image">
-                    <img src="api/thumbnails.php?cmd=get_thumbnail&amp;id=<%- image %>"/>
+                    <a href="api/files.php?cmd=download&amp;id=<%- image %>">
+                        <img src="api/thumbnails.php?cmd=get_thumbnail&amp;id=<%- image %>"/>
+                    </a>
+                    <button type="button" class="delete" data-id="<%- image %>">Delete</button>
                 </div>
             <% }) %>
         </script>

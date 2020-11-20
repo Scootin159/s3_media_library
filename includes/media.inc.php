@@ -4,7 +4,14 @@ class Media
 {
     public static function ReadEXIFData(string $image_file)
     {
-        return exif_read_data($image_file);
+        $exif = exif_read_data($image_file);
+        return $exif !== false ? $exif : null;
+    }
+
+    public static function GetMimeType(string $image_file)
+    {
+        $mime = mime_content_type($image_file);
+        return $mime !== false ? $mime : null;
     }
 
     public static function CreateThumbnail(string $image_data) : string

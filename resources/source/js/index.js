@@ -10,8 +10,21 @@ $(document).ready(function () {
         $.get({
             url: 'api/thumbnails.php?cmd=get_thumbnails',
             success: function(data) {
-                console.log(data);
                 $("#main_gallery").html(new view().template(data));
+
+                $("button.delete").click(function (){
+                    $(this).closest("div.image").remove();
+                    $.post({
+                        url: 'api/files.php',
+                        data: {
+                            "cmd": "delete",
+                            "id": $(this).data("id")
+                        },
+                        success: function() {
+                            $(this).closest("div.image").remove();
+                        }
+                    })
+                });
             }
         });
     });
