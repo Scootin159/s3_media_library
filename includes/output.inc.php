@@ -28,4 +28,18 @@ class Output
         echo(json_encode($json));
         exit();
     }
+
+    public static function JPEG($jpeg) : void
+    {
+        header('Content-Type: image/jpeg');
+        echo $jpeg;
+        exit();
+    }
+
+    public static function WEBP($webp) : void
+    {
+        header('Content-Type: image/webp');
+        echo $webp;
+        exit();
+    }
 }

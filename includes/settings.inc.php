@@ -13,6 +13,11 @@ class Settings
 
         // Disable some admin settings not ready for live use
         self::DefineDefault('SETTING_ENABLE_SET_PASSWORD', false);
+
+        self::DefineDefault('SETTING_S3_CONNECT_INFO', []);
+        self::DefineDefault('SETTING_S3_BUCKET', null);
+
+        self::DefineDefault('SETTING_IMAGE_THUMBNAIL_SIZE', 200);
     }
 
     private static function DefineDefault(string $setting, $value) : void

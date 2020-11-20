@@ -26,7 +26,11 @@ function do_upload_file()
 {
     foreach($_FILES as $file)
     {
-        $file_data = file_get_contents($file['tmp_name']);
+        $file_data = file_get_contents($file['tmp_name']);        
+
+        Loader::LoadLevel(Loader::LOAD_LEVEL_MEDIA);
+        $exif = Media::ReadEXIFData($file['tmp_name']);
+        $thumbnail = Media::CreateThumbnail($file_data);        
 
         Loader::LoadLevel(Loader::LOAD_LEVEL_USER);
         Loader::LoadLevel(Loader::LOAD_LEVEL_DATABASE);
@@ -34,7 +38,12 @@ function do_upload_file()
             [
                 'userid' => User::GetUserId(),
                 'filename' => $file['name'],
-                'upload_date' => new UTCDateTime()
+                'upload_date' => new UTCDateTime(),
+                'exif' => $exif !== false ? $exif : null,
+                'thumbnail' => [
+                    'data' => $thumbnail,
+                    'content_type' => 'image/webp'
+                ]
             ]
         );
 

@@ -4,6 +4,8 @@ require_once(__DIR__ . '/loader.inc.php');
 
 function debug_die($var = "debug_die reached")
 {
-    print_r($var);
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
     die();
 }
