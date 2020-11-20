@@ -26,7 +26,7 @@ gulp.task('js', function () {
         //.pipe(jshint.reporter, 'jshint-stylish')
         //.pipe(jshint.reporter('fail'))
         .pipe(include())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('resources/dist/js'));
 });
 

@@ -2,7 +2,17 @@
     {% set page_js = 'index.js' %}
     {% include 'common/head.twig' %}
     <body>
-        <a href="login.php?cmd=logout">Logout</a><br />
-        <a href="upload.php">Upload an image</a>
+        <div id="top_header">
+            <a href="login.php?cmd=logout">Logout</a><br />
+            <a href="upload.php">Upload an image</a>
+        </div>
+        <div id="main_gallery"></div>
+        <script id="main_gallery_template" type="text/template">
+            <% _.each(images, function(image) { %>
+                <div class="image">
+                    <img src="api/thumbnails.php?cmd=get_thumbnail&amp;id=<%- image %>"/>
+                </div>
+            <% }) %>
+        </script>
     </body>
 </html>
